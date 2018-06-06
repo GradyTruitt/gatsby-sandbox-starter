@@ -20,7 +20,7 @@ ________________
 ## Getting Started
 Start using this starter (assuming Gatsby is installed) by running from your CLI:
 ```bash
-gatsby new <repo-name> https://github.com/merchantlabs/gatsby-starter-mlabs
+gatsby new <repo-name> https://github.com/GradyTruitt/gatsby-sandbox-starter
 ```
 
 *Site Configuration* update things like site name, logo, url, etc in `data/site-config.js`
