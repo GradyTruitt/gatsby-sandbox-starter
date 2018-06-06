@@ -1,0 +1,90 @@
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: src/images
+public_folder: images
+
+collections:
+  - label: Settings
+    name: settings
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: "src/settings.json"
+        label: General Settings
+        name: generalSettings
+        fields:
+          - { label: "Site Title", name: "siteTitle", widget: "string" }
+          - { label: "Alternate Site Title", name: "siteTitleAlt", widget: "string" }
+          - { label: "Site Description", name: "siteDescription", widget: "string" }
+          - { label: "CMS Site Title", name: "cmsTitle", widget: "hidden" }
+          - { label: "Logo", name: "siteLogo", widget: "hidden" }
+          - { label: "Meta Image", name: "metaImage", widget: "hidden" }
+          - { label: "Site URL", name: "siteUrl", widget: "hidden" }
+          - { label: "Path Prefix", name: "pathPrefix", widget: "hidden" }
+          - { label: "FB App ID", name: "siteFBAppID", widget: "hidden" }
+          - { label: "Google Analytics ID", name: "googleAnalyticsID", widget: "hidden" }
+          - { label: "Background Color", name: "backgroundColor", widget: "hidden" }
+          - { label: "Theme Color", name: "themeColor", widget: "hidden" }
+
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "src/pages/index.md"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden", default: "index" }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "string" }
+          - label: "Header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Sub-Title", name: "subTitle", widget: "string" }
+              - { label: "Image", name: "image", widget: "hidden" }
+      - file: "src/pages/about.md"
+        label: "About"
+        name: "about"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden" }
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "description", widget: "string" }
+          - label: "Header"
+            name: "header"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Sub-Title", name: "subTitle", widget: "string" }
+              - { label: "Image", name: "image", widget: "hidden" }
+          - {label: "Body", name: "body", widget: "markdown"}
+      - file: "src/pages/blog/index.md"
+        label: "Blog"
+        name: "blog"
+        fields:
+          - { label: "Template Key", name: "templateKey", widget: "hidden" }
+          - { label: "Title", name: "title", widget: "string" }
+          - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "blog"
+    label: "Blog"
+    folder: "src/pages/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text"}
+      - {label: "Body", name: "body", widget: "markdown"}
